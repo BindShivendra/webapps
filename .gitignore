@@ -1,0 +1,9 @@
+local_settings.py
+prod_settings.py
+
+.vscode
+__pycache__
+
+# local databse
+db.sqlite3 
+
