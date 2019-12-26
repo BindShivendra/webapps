@@ -1,0 +1,161 @@
+@import url('https://fonts.googleapis.com/css?family=Acme|Lobster|Patua+One|Rubik|Sniglet&display=swap');
+
+
+*{
+    box-sizing: border-box; /* includes border and padding in total size of element  */
+}
+
+header,
+section{
+    overflow-x: hidden;
+}
+
+:root{
+    --Snigle-font: "Sniglet",cursive;
+    --Rubic: "Rubik", cursive;
+    --Acme: "Acme", cursive;
+    --Lobster: "Lobster", cursive;
+    --Patua: "Patua One", cursive;
+
+    --light-block: #2e2c2caf;
+    --bg-gradient: linear-gradient(to bottom, #dd2476, #ff512f);
+    --light-gray: rgba(225,225,225,0.877)
+}
+
+header a {
+    font-family: var(--Snigle-font);
+    font-size: 0.9em;
+    color: whitesmoke;
+}
+
+header{
+    background-color: #dd2476;
+    background: var(--bg-gradient);
+}
+
+header .nav-item:last-child{
+    padding-right: 10.5em;
+}
+
+header .nav-item{
+    padding: 0.9em;
+}
+
+header .navbar-brand{
+    padding-left: 8rem;
+}
+
+header .nav-link:hover{
+    color: black;
+}
+
+header .row .col-md-5{
+    padding: 4.5vmin 1vmin;
+}
+
+header .row .col-md-7{
+    padding: 22vmin 1vmin;
+    padding-bottom: 35vmin;
+    font-family: var(--Rubic);
+    color: whitesmoke;
+}
+
+header .row .col-md-5 img{
+    width: 90%;
+}
+
+header .container .col-md-7 h6{
+    padding: 1vmin;
+    letter-spacing: 4px;
+}
+
+header .container .col-md-7 h1{
+    font-size: 8.5vmin;
+    font-weight: bold;
+    padding: 0.1em 0em;
+}
+header .container .col-md-7 p{
+    padding: 1vmin 5vmin;
+}
+
+/* =============== section 1 ================= */
+
+.section-1{
+    padding: 20vmin 0;
+}
+
+.section-1 .col-md-6 .pray img{
+    opacity: 0.8;
+    width: 90%;
+    border-radius: 0.2em;
+}
+
+.section-1 .row .col-md-6:last-child{
+    position: relative;
+}
+
+.section-1 .row .col-md-6 .panel{
+    position: absolute;
+    top: 7vmin;
+    left: -18vmin;
+    background: white;
+    border-radius: 3px;
+    text-align: left;
+    padding: 13vmin 0 10vmin 10vmin;
+    box-shadow: 0px 25px 42px rgba(0, 0, 0, 0.2);
+    font-family: var(--Rubic);
+    font-size: 1em;
+}
+
+.section-1 .row .col-md-6 .panel h1{
+    font-weight: bold;
+    padding: 0.4em 0em;
+    font-size: 2em;
+}
+
+.section-1 .row .col-md-6 .panel p{
+    color: rgba(0, 0, 0, 0.5);
+}
+
+/* ================== section 2 ======================= */
+
+
+.cover{
+    width: 100%;
+    height: 55vmin;
+    background: url('../img/computers.png');
+    background-position: -24rem -19rem;
+    background-size: 150%;
+    position: relative;
+}
+
+.cover .content{
+    background: rgba(0, 0, 0, 0.7);
+    height: 100%;
+    width: 100%;
+    padding-top: 19vmin;
+}
+
+.cover .content > h1{
+    font-family: var(--Patua);
+    font-size: 6vmin;
+    color: whitesmoke;
+}
+
+.cover .content > p{
+    font-family: var(--Rubic);
+    font-size: 2vmin;
+    color: whitesmoke;
+}
+
+.numbers .rect{
+    position: relative;
+    z-index: 1;
+    background: white;
+    width: 17vmin;
+    height: 12vmin;
+    padding-top: 3.5vmin;
+    margin: 1rem;
+    border-radius: 0.5rem;
+    box-shadow: 1px 2px 50px 0px;
+}
