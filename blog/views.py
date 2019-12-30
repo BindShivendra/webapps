@@ -1,5 +1,11 @@
 from django.shortcuts import render
+from django.views.generic import ListView
+
+from .models import Post
+
+class PostListView(ListView):
+    model = Post
+    template_name = 'list_view.html'
 
 
-def list_view(request):
-    pass
+list_view = PostListView.as_view()
