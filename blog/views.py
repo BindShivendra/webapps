@@ -1,11 +1,13 @@
 from django.shortcuts import render
 from django.views.generic import ListView, DetailView, CreateView, DeleteView, UpdateView
+from django.urls import reverse_lazy
 
 from .models import Post
 
 class PostListView(ListView):
     model = Post
     template_name = 'list_view.html'
+    paginate_by = 4
 
 
 class PostDetailView(DetailView):
@@ -27,6 +29,7 @@ class PostUpdateView(UpdateView):
 
 class PostDeleteView(DeleteView):
     model = Post
+    success_url = reverse_lazy('blog:list')
 
 list_view = PostListView.as_view()
 detail_view = PostDetailView.as_view()

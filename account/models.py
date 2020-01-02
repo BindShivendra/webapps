@@ -48,3 +48,7 @@ class User(AbstractUser):
         return self.is_active and ( self.is_superuser 
                 or self.is_staff and self.groups.filter(name='Employees').exists()
             )
+
+    @property
+    def username(self):
+        return f'{self.first_name} {self.last_name}'

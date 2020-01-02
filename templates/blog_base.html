@@ -36,14 +36,21 @@
                     <a class="nav-link" href="#">Apps</a>
                 </li>
                 <li class="nav-item">
-                    <a class="nav-link" href="#" tabindex="-1" aria-disabled="true">About</a>
+                    <a class="nav-link" href="#">About</a>
+                </li>
+                <li class="nav-item">
+                  {% if user.is_authenticated %} 
+                    <a class="nav-link" href="{% url 'auth:logout' %}" >Logout</a>
+                  {% else %}
+                    <a class="nav-link" href="{% url 'auth:login' %}" >Login</a>
+                  {% endif %}
                 </li>
             </ul>
-            <form class="form-inline my-2 my-lg-0">
+            <!-- <form class="form-inline my-2 my-lg-0">
                 <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
                 <button class="btn btn-outline-secondary my-2 my-sm-0" type="submit"><i
                         class="fa fa-search"></i></button>
-            </form>
+            </form> -->
         </div>
     </nav>
     <main role="main" class="container">
@@ -56,7 +63,14 @@
               <h3>Our Sidebar</h3>
               <p class='text-muted'>You can put any information here you'd like.
                 <ul class="list-group">
-                  <li class="list-group-item list-group-item-light">Latest Posts</li>
+                  <li class="list-group-item list-group-item-light">
+                    <ul class="list-unstyled ">
+                      {% for post in top_5 %}
+                      <li><a class="text-decoration-none" href="{% url 'blog:detail' post.slug %}">{{ post.title| title }}</a></li>
+                      {% endfor %}
+                    </ul>
+
+                  </li>
                   <li class="list-group-item list-group-item-light">Announcements</li>
                   <li class="list-group-item list-group-item-light">Calendars</li>
                   <li class="list-group-item list-group-item-light">etc</li>

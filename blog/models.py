@@ -10,7 +10,7 @@ USER = get_user_model()
 class PostManager(models.Manager):
 
     def published(self):
-        return self.get_queryset().published()
+        return self.get_queryset().filter(publish_date__isnull=False)
 
 class Post(models.Model): 
     user    = models.ForeignKey(USER, on_delete=models.CASCADE)
@@ -36,7 +36,5 @@ class Post(models.Model):
 def pre_save_receiver(sender, instance, *args, **kwargs):
     if not instance.slug:
         instance.slug = slug_generator(instance)
-    print(slug_generator(instance))
-    print(instance.slug)
 
 pre_save.connect(pre_save_receiver, sender=Post)

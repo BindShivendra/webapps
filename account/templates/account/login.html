@@ -35,5 +35,10 @@
             <button class="btn btn-outline-info" type="submit">Log In</button>
         </div>
     </form>
+    <div class="border-top pt-3">
+        <small class="text-muted">
+            Need An Account? <a class="ml-2" href="{% url 'auth:signup' %}">Sign Up</a>
+        </small>
+    </div>
 </div>
 {% endblock content %}
