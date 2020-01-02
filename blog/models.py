@@ -1,5 +1,9 @@
 from django.db import models
 from django.contrib.auth import get_user_model
+from django.urls import reverse_lazy
+from django.db.models.signals import pre_save
+
+from .utils import slug_generator
 
 USER = get_user_model()
 
@@ -11,7 +15,7 @@ class PostManager(models.Manager):
 class Post(models.Model): 
     user    = models.ForeignKey(USER, on_delete=models.CASCADE)
     title  = models.CharField(max_length=120)
-    slug   = models.SlugField(unique=True) 
+    slug   = models.SlugField(unique=True, null=True, blank=True) 
     body  = models.TextField(null=True, blank=True)
     created_at = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
@@ -24,3 +28,15 @@ class Post(models.Model):
 
     def __str__(self):
         return self.title
+
+    def get_absolute_url(self):
+        return reverse_lazy('blog:detail', kwargs={'slug': self.slug})
+
+
+def pre_save_receiver(sender, instance, *args, **kwargs):
+    if not instance.slug:
+        instance.slug = slug_generator(instance)
+    print(slug_generator(instance))
+    print(instance.slug)
+
+pre_save.connect(pre_save_receiver, sender=Post)
