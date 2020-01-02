@@ -2,7 +2,7 @@ import random
 import string
 from django.utils.text import slugify
 
-DONT_USE = ['new']
+DONT_USE = ['new', 'myblogs ']
 
 def random_string_generator(size=10):
     chars=string.ascii_lowercase + string.digits

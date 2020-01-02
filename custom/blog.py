@@ -23,8 +23,7 @@ class BlogMiddleware:
             if top_5 is None:
                 top_5 = Post.objects.published()[:5]
                 cache.set('top_5',top_5)
-                response.context_data['top_5'] = cache.get('top_5', None)
+                response.context_data['top_5'] = top_5
             else:
-                response.context_data['top_5'] = cache.get('top_5', None)
-            logger.info(response.context_data['top_5'])
+                response.context_data['top_5'] = top_5
         return response

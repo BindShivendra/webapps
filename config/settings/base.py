@@ -138,7 +138,7 @@ MEDIA_ROOT = os.path.join(BASE_DIR, 'media')
 CRISPY_TEMPLATE_PACK = 'bootstrap4'
 
 LOGIN_REDIRECT_URL = 'blog:list'
-LOGIN_URL = 'users:login'
+LOGIN_URL = 'auth:login'
 
 # debug toolbar
 INTERNAL_IPS = ['127.0.0.1',]

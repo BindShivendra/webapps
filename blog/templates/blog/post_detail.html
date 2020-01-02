@@ -2,13 +2,13 @@
 
 {% block content %}
 <article class="media content-section">
-    <!-- <img class="rounded-circle article-img"  src="{{ object.author.profile.profile_pic.url }}" alt="" srcset=""> -->
+    {#<img class="rounded-circle article-img"  src="{{ object.author.profile.profile_pic.url }}" alt="" srcset="">#}
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ object.user.username }}</a>
+            <a class="mr-2" href="#">{{ object.user_username }}</a>
             <small class="text-muted">{{ object.publish_date | date:"d F, Y"}}</small>
             <div>
-                {% if user.username == object.user.username  %}
+                {% if user.username == object.user_username  %}
                     <a href="{% url 'blog:update' object.slug %}" class="btn btn-secondary m-1 btn-sm">update</a>
                     <a href="{% url 'blog:delete' object.slug %}" class="btn btn-secondary m-1 bg-danger btn-sm">delete</a>
                 {% endif %}
