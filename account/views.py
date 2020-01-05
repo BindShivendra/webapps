@@ -42,3 +42,10 @@ class SignUpView(FormView):
         return res
 
 signup = SignUpView.as_view()
+
+
+class ProfileView(DetailView):
+    model = models.Profile
+
+
+profile = ProfileView.as_view()

@@ -2,6 +2,7 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.contrib.auth.models import BaseUserManager, AbstractUser
 
+from PIL import Image
 
 class UserManager(BaseUserManager):
     use_in_migrations = True
@@ -52,3 +53,23 @@ class User(AbstractUser):
     @property
     def username(self):
         return f'{self.first_name} {self.last_name}'
+
+
+
+class Profile(models.Model):
+    profile = models.OneToOneField(User, on_delete=models.CASCADE)
+    profile_pic = models.ImageField(default='default.jpg', upload_to='profile_pics/%Y/%m/%d')
+
+    def __str__(self):
+        return self.profile.username
+
+    def save(self, *args, **kwargs):
+        super().save( *args, **kwargs)
+
+        img = Image.open(self.profile_pic.path)
+        # img = img.convert('RGB')
+        if img.height > 300 or img.width > 300:
+            out_size = (300,300)
+            img.thumbnail(out_size)
+            img = img.convert('RGB')
+            img.save(self.profile_pic.path)

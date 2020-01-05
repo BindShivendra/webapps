@@ -7,6 +7,7 @@ from .forms import AuthenticationForm
 app_name = 'auth'
 
 urlpatterns = [
+    path('profile/<int:pk>', views.profile, name='profile'),
     path('signup', views.signup, name='signup'),
     path('login', auth_views.LoginView.as_view(
         template_name='account/login.html',
