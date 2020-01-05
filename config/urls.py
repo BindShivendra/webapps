@@ -23,10 +23,12 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('account.urls', namespace='auth')),
     path('blog/', include('blog.urls', namespace='blog')),
+    path('ckeditor/', include('ckeditor_uploader.urls')),
     path('', TemplateView.as_view(template_name='base.html'), name='home'),
 ]
 
 urlpatterns += static(settings.STATIC_URL,document_root=settings.STATIC_ROOT)
+urlpatterns += static(settings.MEDIA_URL,document_root=settings.MEDIA_ROOT)
 
 if settings.DEBUG:
     import debug_toolbar

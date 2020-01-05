@@ -40,6 +40,8 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'debug_toolbar',
+    'ckeditor',
+    'ckeditor_uploader',
 
     'account.apps.AccountConfig',
     'blog.apps.BlogConfig',
@@ -122,6 +124,7 @@ USE_L10N = True
 
 USE_TZ = True
 
+SITE_ID = 1
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/2.2/howto/static-files/
@@ -142,3 +145,24 @@ LOGIN_URL = 'auth:login'
 
 # debug toolbar
 INTERNAL_IPS = ['127.0.0.1',]
+
+# CKEDITOR 
+
+CKEDITOR_UPLOAD_PATH = 'uploads'
+CKEDITOR_IMAGE_BACKEND = "pillow"
+
+# CKEDITOR_FILENAME_GENERATOR = 'custom.utils.get_filename' 
+
+CKEDITOR_CONFIGS = {
+    'default': {
+        'toolbar': 'Custom',
+        'toolbar_Custom': [
+            ['Bold', 'Italic', 'Underline'],
+            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
+            ['Link', 'Unlink'],
+            ['RemoveFormat', 'Source'],
+            ['Image', 'HorizontalRule', 'Smiley', 'SpecialChar'],
+        ],
+        'width': 'auto'
+    },
+}

@@ -8,8 +8,10 @@ autopep8 = "*"
 django-debug-toolbar = "*"
 
 [packages]
-django = "==2.2.2"
+django = "==2.2.9"
 django-crispy-forms = "*"
+django-ckeditor = "*"
+pillow = "*"
 
 [requires]
 python_version = "3.8"
