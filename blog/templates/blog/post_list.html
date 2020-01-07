@@ -1,5 +1,4 @@
 {% extends 'blog_base.html' %}
-
 {% block content %}
 {% for post in object_list %}
 <article class="media content-section">
@@ -10,7 +9,7 @@
             <small class="text-muted">{{ post.publish_date | date:"d F, Y"}}</small>
         </div>
         <h2><a class="article-title" href="{% url 'blog:detail' post.slug %}">{{ post.title| title }}</a></h2>
-        <p class="article-content">{{ post.body | safe | truncatewords:50}}</p>
+        <p class="article-content">{{ post.body | safe | truncatewords_html:50}}</p>
     </div>
 </article>
 {% endfor %}

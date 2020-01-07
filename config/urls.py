@@ -23,7 +23,7 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('auth/', include('account.urls', namespace='auth')),
     path('blog/', include('blog.urls', namespace='blog')),
-    path('ckeditor/', include('ckeditor_uploader.urls')),
+    path('summernote/', include('django_summernote.urls')),
     path('', TemplateView.as_view(template_name='base.html'), name='home'),
 ]
 

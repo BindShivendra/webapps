@@ -1,0 +1,3 @@
+https://github.com/summernote/django-summernote
+
+https://summernote.org/deep-dive/

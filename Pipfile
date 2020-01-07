@@ -10,8 +10,8 @@ django-debug-toolbar = "*"
 [packages]
 django = "==2.2.9"
 django-crispy-forms = "*"
-django-ckeditor = "*"
 pillow = "*"
+django-summernote = "*"
 
 [requires]
 python_version = "3.8"

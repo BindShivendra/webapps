@@ -3,7 +3,6 @@ from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 from django.db.models.signals import pre_save
 from ckeditor.fields import RichTextField
-from ckeditor_uploader.fields import RichTextUploadingField
 
 from .utils import slug_generator
 
@@ -18,7 +17,7 @@ class Post(models.Model):
     user    = models.ForeignKey(USER, on_delete=models.CASCADE)
     title  = models.CharField(max_length=120)
     slug   = models.SlugField(unique=True, null=True, blank=True) 
-    body  = RichTextUploadingField()
+    body  = models.TextField()
     created_at = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
     publish_date = models.DateTimeField(auto_now=False, auto_now_add=False, null=True, blank=True)

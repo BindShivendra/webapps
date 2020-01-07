@@ -6,11 +6,19 @@ from django.contrib.auth.mixins import UserPassesTestMixin
 from django.urls import reverse_lazy
 
 from .models import Post
+from .forms import PostForm
+from .utils import remove_image
 
 class PostListView(ListView):
     model = Post
     template_name = 'list_view.html'
     paginate_by = 10
+
+    def get_queryset(self):
+        qs = super(PostListView, self).get_queryset()
+        for post in qs:
+            post.body  = remove_image(post.body)
+        return qs
 
 
 class PostDetailView(DetailView):
@@ -18,7 +26,8 @@ class PostDetailView(DetailView):
 
 class PostCreateView(LoginRequiredMixin, CreateView ):
     model = Post
-    fields = ['title', 'body' ]
+    # fields = ['title', 'body' ]
+    form_class = PostForm
 
     def form_valid(self, form):
         form.instance.user = self.request.user
@@ -26,7 +35,8 @@ class PostCreateView(LoginRequiredMixin, CreateView ):
 
 class PostUpdateView(LoginRequiredMixin, UserPassesTestMixin, UpdateView):
     model = Post
-    fields = ['title', 'body' ]
+    # fields = ['title', 'body' ]
+    form_class = PostForm
 
     def test_func(self):
         post = self.get_object()

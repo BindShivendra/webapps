@@ -40,8 +40,7 @@ INSTALLED_APPS = [
 
     'crispy_forms',
     'debug_toolbar',
-    'ckeditor',
-    'ckeditor_uploader',
+    'django_summernote',
 
     'account.apps.AccountConfig',
     'blog.apps.BlogConfig',
@@ -143,26 +142,55 @@ CRISPY_TEMPLATE_PACK = 'bootstrap4'
 LOGIN_REDIRECT_URL = 'blog:list'
 LOGIN_URL = 'auth:login'
 
+# Logging https://docs.djangoproject.com/en/2.2/topics/logging/
+LOGGING = {
+        'version': 1,
+        'disable_existing_loggers': False,
+        "formatters": {
+            "simple": {
+                "format": "%(levelname)s %(asctime)-15s %(message)s"
+            }
+        },
+        'handlers': {
+            'console': {
+                'level': 'DEBUG',
+                'class': 'logging.StreamHandler',
+                'formatter': 'simple'
+            },
+        },
+        'loggers': {
+            'main': {
+                'handelers': ['console'],
+                'level': 'DEBUG',
+                'propagate': True,
+            },
+            'app_api': {
+                'handlers': ['console'],
+                'level': 'INFO',
+            }
+        },
+    }
+    
 # debug toolbar
 INTERNAL_IPS = ['127.0.0.1',]
 
-# CKEDITOR 
 
-CKEDITOR_UPLOAD_PATH = 'uploads'
-CKEDITOR_IMAGE_BACKEND = "pillow"
+# summernote
+SUMMERNOTE_THEME = 'bs4'
 
-# CKEDITOR_FILENAME_GENERATOR = 'custom.utils.get_filename' 
-
-CKEDITOR_CONFIGS = {
-    'default': {
-        'toolbar': 'Custom',
-        'toolbar_Custom': [
-            ['Bold', 'Italic', 'Underline'],
-            ['NumberedList', 'BulletedList', '-', 'Outdent', 'Indent', '-', 'JustifyLeft', 'JustifyCenter', 'JustifyRight', 'JustifyBlock'],
-            ['Link', 'Unlink'],
-            ['RemoveFormat', 'Source'],
-            ['Image', 'HorizontalRule', 'Smiley', 'SpecialChar'],
+SUMMERNOTE_CONFIG = {
+    # You can put custom Summernote settings
+    'summernote': {
+        'width': '100%',
+         'toolbar': [
+            ['style', ['style']],
+            ['font', ['bold', 'underline', 'clear']],
+            ['fontname', ['fontname']],
+            ['color', ['color']],
+            ['para', ['ul', 'ol', 'paragraph']],
+            ['insert', ['picture']],
+            ['view', ['fullscreen', 'help']],
         ],
-        'width': 'auto'
     },
+    'attachment_require_authentication': True,
 }
