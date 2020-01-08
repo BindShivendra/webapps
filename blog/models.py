@@ -2,7 +2,6 @@ from django.db import models
 from django.contrib.auth import get_user_model
 from django.urls import reverse_lazy
 from django.db.models.signals import pre_save
-from ckeditor.fields import RichTextField
 
 from .utils import slug_generator
 

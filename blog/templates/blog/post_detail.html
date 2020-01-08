@@ -10,6 +10,7 @@
             <div>
                 {% if user.username == object.user.username  %}
                     <a href="{% url 'blog:update' object.slug %}" class="btn btn-secondary m-1 btn-sm">update</a>
+                    <a href="{% url 'blog:publish' object.slug %}" class="btn btn-secondary m-1 btn-sm">Publish</a>
                     <a href="{% url 'blog:delete' object.slug %}" class="btn btn-secondary m-1 bg-danger btn-sm">delete</a>
                 {% endif %}
             </div>

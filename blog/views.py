@@ -1,9 +1,11 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 from django.views.generic import ListView, DetailView
 from django.views.generic import CreateView, DeleteView, UpdateView
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.contrib.auth.mixins import UserPassesTestMixin
 from django.urls import reverse_lazy
+from django.http import HttpResponseRedirect
+from  django.utils import timezone
 
 from .models import Post
 from .forms import PostForm
@@ -62,6 +64,16 @@ class UserPostListView(LoginRequiredMixin, ListView):
 
     def get_queryset(self):
         return Post.objects.filter(user=self.request.user)
+
+def publish(request, slug):
+    user = request.user
+    post = Post.objects.get(slug=slug)
+    if user.is_authenticated and post.user == user:
+        post.publish_date = timezone.now()
+        post.save()
+    
+    return redirect(reverse_lazy('blog:detail', args=[post.slug]))
+
 
 list_view = PostListView.as_view()
 detail_view = PostDetailView.as_view()

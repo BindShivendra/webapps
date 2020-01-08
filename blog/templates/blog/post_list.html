@@ -5,8 +5,8 @@
     {#<!-- <img class="rounded-circle article-img"  src="{{ post.user.profile.profile_pic.url }}" alt="" srcset=""> -->#}
     <div class="media-body">
         <div class="article-metadata">
-            <a class="mr-2" href="#">{{ post.user.username }}</a>
-            <small class="text-muted">{{ post.publish_date | date:"d F, Y"}}</small>
+            By <a class="mr-2" href="{% url 'auth:profile' post.user.id %}">{{ post.user.username }}</a>
+            <small class="text-muted">Published on {{ post.publish_date | date:"d F, Y"}}</small>
         </div>
         <h2><a class="article-title" href="{% url 'blog:detail' post.slug %}">{{ post.title| title }}</a></h2>
         <p class="article-content">{{ post.body | safe | truncatewords_html:50}}</p>
