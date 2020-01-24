@@ -6,7 +6,7 @@ from account import models
 @admin.register(models.User)
 class UserAdmin(DjangoUserAdmin):
     fieldsets =(
-        (None, {'fields': ('email', 'password')} ),
+        (None, {'fields': ('email', 'password', 'slug')} ),
         (
             'personal info',
             {'fields': ('first_name', 'last_name')},

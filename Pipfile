@@ -8,10 +8,11 @@ autopep8 = "*"
 django-debug-toolbar = "*"
 
 [packages]
-django = "==2.2.9"
+django = "==2.2.8"
 django-crispy-forms = "*"
 pillow = "*"
 django-summernote = "*"
+django-sendgrid-v5 = "*"
 
 [requires]
 python_version = "3.8"

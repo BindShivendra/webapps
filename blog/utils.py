@@ -27,7 +27,6 @@ def slug_generator(instance, slug=None):
     
     class_name = instance.__class__
     qs_exists = class_name.objects.filter(slug=new_slug).exists()
-    print(new_slug)
     if qs_exists:
         new_slug = "{slug}-{randstr}".format(
                     slug=slug,
